@@ -1,0 +1,3 @@
+body{background-color:#000000;overflow:hidden;padding:0px;margin:0px;}
+div{color:#FFFFFF; z-index:1; position:absolute;right:0px;top:0px;font-size:10px;text-align:right;}
+canvas{border:1px solid #FFFFFF;}
