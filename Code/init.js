@@ -30,7 +30,7 @@ function init(){
     }
     document.head.appendChild(c);
   }
-  canvas=document.body.firstChild;//lazy, okay?
+  canvas=document.body.firstChild;//lazy, okay?  and you know, it'll break if anything gets inserted before it.
   canvas.style.width=document.body.clientWidth;
   canvas.style.height=document.body.clientHeight;
   canvas.width=document.body.clientWidth;

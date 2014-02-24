@@ -9,12 +9,12 @@ var up=false,down=false, left=false, right=false, fire=false, shift=false,spacek
     if(keys[id]===32)spacekey=true;
   }
   var cha=objects[0];
-  if(right&&cha.velocityx<cha.velocity)cha.velocityx++;
-  if(left&&cha.velocityx>-cha.velocity)cha.velocityx--;
-  if(spacekey&&cha.velocityy>-cha.velocity&&cha.land===true){cha.velocityy=cha.velocityy-15; cha.land=false;}
-  else if(up&&cha.velocityy>-cha.velocity&&cha.velocityy<0){cha.velocityy=cha.velocityy-0.5;cha.land=false;}
-  if(down&&cha.velocityy<cha.velocity)cha.velocityy++;
-  if(cha.land===false)cha.velocityy++;
+  if(right&&cha.velocityx<cha.velocity)cha.velocityx=cha.velocityx+.5;
+  if(left&&cha.velocityx>-cha.velocity)cha.velocityx=cha.velocityx-.5;
+  if(spacekey&&cha.velocityy>-cha.velocity&&cha.land===true){cha.velocityy=cha.velocityy-5; cha.land=false;}
+  else if(up&&cha.velocityy>-cha.velocity&&cha.velocityy<0){cha.velocityy=cha.velocityy-0.05;cha.land=false;}
+  if(down&&cha.velocityy<cha.velocity)cha.velocityy=cha.velocityy+.05;
+  if(cha.land===false){cha.velocityy=cha.velocityy+.25;cha.velocityx=cha.velocityx*0.96;}
   else cha.velocityx=cha.velocityx*0.9;
   if(cha.x+cha.width+cha.velocityx>800){cha.x=800-cha.width;if(cha.land)cha.velocityx=0;else cha.velocityx=-cha.velocityx*0.6;}
   if(cha.x+cha.velocityx<0){cha.x=0;if(cha.land)cha.velocityx=0;else cha.velocityx=-cha.velocityx*0.6;}

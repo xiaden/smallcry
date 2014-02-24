@@ -1,4 +1,5 @@
 function animate(){
+  // add in the debug information if debugging is turned on.
   if(debug===true){
     document.getElementById("keys").innerHTML="";
     for(var id=keys.length-1;id>=0;id--){document.getElementById("keys").innerHTML+=keys[id]+"<br />";}
