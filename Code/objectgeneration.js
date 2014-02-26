@@ -13,8 +13,6 @@ console.log("gening an enemy");
   e.y=y||Math.floor(Math.random()*400-e.width);
   e.xv=s||Math.floor(Math.random()*5);
   e.yv=s||Math.floor(Math.random()*5);
-
-
 }
 
 
