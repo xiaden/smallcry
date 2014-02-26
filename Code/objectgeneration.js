@@ -11,8 +11,8 @@ console.log("gening an enemy");
   e.height=32;
   e.x=x||Math.floor(Math.random()*800-e.width);
   e.y=y||Math.floor(Math.random()*400-e.width);
-  e.xv=s||Math.floor(Math.random()*5);
-  e.yv=s||Math.floor(Math.random()*5);
+  e.velocityx=s||Math.floor(Math.random()*5);
+  e.velocityy=s||Math.floor(Math.random()*5);
 }
 
 

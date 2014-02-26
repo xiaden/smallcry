@@ -26,7 +26,7 @@ var up=false,down=false, left=false, right=false, fire=false, shift=false,spacek
 
  for(var did in objects){
 if(did===0)break;
-   if(objects[did].x+objects[did].velocityx+objects[did].width<document.body.clientWidth)objects[did].x=objects[did].x+objects[did].velocityx;
-   if(objects[did].y+objects[did].velocityy+objects[did].width<document.body.clientHeight)objects[did].y=objects[did].y+objects[did].velocityy;
+   if(objects[did].x*scale+objects[did].velocityx*scale+objects[did].width*scale<document.body.clientWidth)objects[did].x=objects[did].x+objects[did].velocityx;
+   if(objects[did].y*scale+objects[did].velocityy*scale+objects[did].height*scale<document.body.clientHeight)objects[did].y=objects[did].y+objects[did].velocityy;
   }
 }
