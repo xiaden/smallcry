@@ -31,20 +31,36 @@ function init(){
     document.head.appendChild(c);
   }
   canvas=document.body.firstChild;//lazy, okay?  and you know, it'll break if anything gets inserted before it.
-  canvas.style.width=document.body.clientWidth;
-  canvas.style.height=document.body.clientHeight;
-  canvas.width=document.body.clientWidth;
-  canvas.height=document.body.clientHeight;
-  if(canvas.width<canvas.height)scale=canvas.width/800;//designating the scale of the document
-  else scale=canvas.height/400;
-  window.onresize=function(){
-  canvas.style.width=document.body.clientWidth;
-  canvas.style.height=document.body.clientHeight;
-  canvas.width=document.body.clientWidth;
-  canvas.height=document.body.clientHeight;
-  if(canvas.width/2<canvas.height)scale=canvas.width/800;//designating the scale of the document
-  else scale=canvas.height/400;
-  };
+  if(document.body.clientWidth/2<document.body.clientHeight){
+    canvas.style.width=document.body.clientWidth;
+    canvas.width=document.body.clientWidth; //theres something weird going on here...
+    scale=canvas.width/800;//designating the scale of the document
+    canvas.style.height=400*scale;
+    canvas.height=400*scale;
+  }
+  else {
+    canvas.style.height=document.body.clientHeight;
+    canvas.height=document.body.clientHeight;
+    scale=canvas.height/400;
+    canvas.style.width=800*scale;
+    canvas.width=800*scale;
+  }
+  window.onresize=(function(){
+  if(document.body.clientWidth/2<document.body.clientHeight){
+    canvas.style.width=document.body.clientWidth;
+    canvas.width=document.body.clientWidth; //theres something weird going on here...
+    scale=canvas.width/800;//designating the scale of the document
+    canvas.style.height=400*scale;
+    canvas.height=400*scale;
+  }
+  else {
+    canvas.style.height=document.body.clientHeight;
+    canvas.height=document.body.clientHeight;
+    scale=canvas.height/400;
+    canvas.style.width=800*scale;
+    canvas.width=800*scale;
+  }
+  });
   gradx=0;
   grady=0;
   graddir=0;
