@@ -19,6 +19,6 @@ function animate(){
   context.fillRect(0, 0, 800*scale, 400*scale);
 
   for(var did in objects){
-    context.drawImage(objects[did].object, objects[did].x*scale, objects[did].y*scale, objects[did].width*scale, objects[did].height*scale);
+    context.drawImage(objects[did].object, objects[did].x, objects[did].y, objects[did].width, objects[did].height);
   }
 }

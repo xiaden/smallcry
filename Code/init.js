@@ -33,33 +33,43 @@ function init(){
   canvas=document.body.firstChild;//lazy, okay?  and you know, it'll break if anything gets inserted before it.
   if(document.body.clientWidth/2<document.body.clientHeight){
     canvas.style.width=document.body.clientWidth;
-    canvas.width=document.body.clientWidth; //theres something weird going on here...
-    scale=canvas.width/800;//designating the scale of the document
+    canvas.width=document.body.clientWidth;
+    scale=canvas.width/800;//designating the scale of the working area
     canvas.style.height=400*scale;
     canvas.height=400*scale;
   }
   else {
     canvas.style.height=document.body.clientHeight;
     canvas.height=document.body.clientHeight;
-    scale=canvas.height/400;
+    scale=canvas.height/400;//designating the scale of the working area
     canvas.style.width=800*scale;
     canvas.width=800*scale;
   }
   window.onresize=(function(){
+    var lastscale=scale;
   if(document.body.clientWidth/2<document.body.clientHeight){
     canvas.style.width=document.body.clientWidth;
-    canvas.width=document.body.clientWidth; //theres something weird going on here...
-    scale=canvas.width/800;//designating the scale of the document
+    canvas.width=document.body.clientWidth;
+    scale=canvas.width/800;//designating the scale of the working area
     canvas.style.height=400*scale;
     canvas.height=400*scale;
   }
   else {
     canvas.style.height=document.body.clientHeight;
-    canvas.height=document.body.clientHeight;
-    scale=canvas.height/400;
+    canvas.height=document.body.clientHeight;//have to set both, or it just auto...scales...things...remind me why I'm scaling this way?
+    scale=canvas.height/400;//designating the scale of the working area
     canvas.style.width=800*scale;
     canvas.width=800*scale;
   }
+    var fixedscale=scale/lastscale;
+    for(var did in objects){
+      objects[did].x=objects[did].x*fixedscale;
+      objects[did].y=objects[did].y*fixedscale;
+      objects[did].velocityx=objects[did].velocityx*fixedscale;
+      objects[did].velocityy=objects[did].velocityy*fixedscale;
+      objects[did].width=objects[did].width*fixedscale;
+      objects[did].height=objects[did].height*fixedscale;
+    }
   });
   gradx=0;
   grady=0;
@@ -73,15 +83,15 @@ function init(){
   var e=objects[0];
   e.object=new Image();
   e.object.src="Images/placeholder.png";
-  e.x=15; //need to put these in reference to the cellmap
-  e.y=15; //and you know... flip y.
-  e.lastx=15;
-  e.lasty=15;
-  e.velocity=20;//Max speed
+  e.x=15*scale; //need to put these in reference to the cellmap
+  e.y=15*scale; //and you know... flip y.
+  e.lastx=15*scale;
+  e.lasty=15*scale;
+  e.velocity=5*scale;//Max speed
   e.velocityx=0;
   e.velocityy=0;
-  e.width=32;
-  e.height=32;
+  e.width=32*scale;
+  e.height=32*scale;
   e.type="character";
   e.land=false;
   e.deaths=0;
