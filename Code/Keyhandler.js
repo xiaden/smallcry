@@ -8,6 +8,7 @@ function keyadd(){
 }
 
 function keydel(){
+  if(event.keyCode==32)objects[0].jumpmod=0;
   for(var id=keys.length-1;id>=0;id--){
     if(keys[id]==event.keyCode){keys.splice(id,1);}
   }
